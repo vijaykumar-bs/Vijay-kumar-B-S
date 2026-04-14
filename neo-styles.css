@@ -774,11 +774,11 @@ body[data-theme="dark"] .job-desc i {
 
 /* Hero Section */
 .hero {
-  min-height: auto;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 3rem;
+  padding: 8rem 3rem;
   max-width: 100%;
   margin: 0;
 }
@@ -1811,7 +1811,9 @@ body[data-theme="dark"] .stat-number {
 }
 
 .section {
-  margin-bottom: 3rem;
+  margin-bottom: 12rem;
+  padding-top: 4rem;
+  scroll-margin-top: 120px;
 }
 
 .section-title {
@@ -1844,7 +1846,8 @@ body[data-theme="dark"] .stat-number {
 
 /* Journey Section */
 .journey-section {
-  margin-bottom: 3rem;
+  margin-bottom: 12rem;
+  scroll-margin-top: 120px;
 }
 
 .journey-container {
@@ -2046,12 +2049,13 @@ body[data-theme="dark"] .stat-number {
 
 .map-pirate-overlay {
   position: absolute;
-  bottom: -60px;
-  left: -13px;
-  width: 200px;
+  bottom: 0;
+  left: 10px;
+  width: 180px;
   height: auto;
   z-index: 1000;
   pointer-events: none;
+  filter: contrast(1.1) brightness(1.05) drop-shadow(0 0 5px rgba(0,0,0,0.2));
 }
 
 /* Leaflet popup styling */
