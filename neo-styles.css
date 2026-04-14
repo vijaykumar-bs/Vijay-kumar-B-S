@@ -774,11 +774,11 @@ body[data-theme="dark"] .job-desc i {
 
 /* Hero Section */
 .hero {
-  min-height: 80vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 8rem 3rem;
+  padding: 4rem 3rem;
   max-width: 100%;
   margin: 0;
 }
@@ -1811,9 +1811,7 @@ body[data-theme="dark"] .stat-number {
 }
 
 .section {
-  margin-bottom: 12rem;
-  padding-top: 4rem;
-  scroll-margin-top: 120px;
+  margin-bottom: 3rem;
 }
 
 .section-title {
@@ -1846,8 +1844,7 @@ body[data-theme="dark"] .stat-number {
 
 /* Journey Section */
 .journey-section {
-  margin-bottom: 12rem;
-  scroll-margin-top: 120px;
+  margin-bottom: 3rem;
 }
 
 .journey-container {
