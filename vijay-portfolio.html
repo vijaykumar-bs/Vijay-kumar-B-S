@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vijay Kumar B S — Data & Business Analyst Portfolio</title>
+
+<style>
+:root {
+  --paper: #ffffff;
+  --paper2: #f6f6f6;
+  --paper3: #e8e8e8;
+  --ink: #111111;
+  --ink2: #222222;
+  --ink3: #4a4a4a;
+  --accent: #0d0d0d;
+  --rule: #111111;
+  --gray: #555555;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: #ffffff;
+  background-image: repeating-linear-gradient(
+    90deg, transparent, transparent 60px, rgba(0,0,0,0.03) 60px, rgba(0,0,0,0.03) 61px
+  );
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--ink);
+}
+
+/* ── PAPER GRAIN ── */
+body::after {
+  content:'';
+  position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 1160px;
+  margin: 0 auto;
+  background: var(--paper);
+  box-shadow: 0 4px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.2);
+  animation: unfold .9s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes unfold {
+  from { opacity:0; transform: perspective(1200px) rotateX(4deg) translateY(40px); }
+  to   { opacity:1; transform: perspective(1200px) rotateX(0)   translateY(0); }
+}
+
+/* ══════════════════════════════════════
+   MASTHEAD
+══════════════════════════════════════ */
+.masthead {
+  border-bottom: 4px double var(--rule);
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.masthead::before {
+  content:'';
+  position:absolute; inset:0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 28px, rgba(0,0,0,0.025) 28px, rgba(0,0,0,0.025) 29px
+  );
+  pointer-events:none;
+}
+
+.ticker {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: .6rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mast-inner {
+  text-align: center;
+  padding: 20px 28px 10px;
+  position: relative;
+}
+
+.mast-ornament {
+  font-size: .75rem;
+  letter-spacing: .8em;
+  color: var(--ink);
+.mast-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0,0,0,.08);
+  position: relative;
+}
+
+.mast-tagline {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: clamp(.65rem, 1.2vw, .85rem);
+  color: var(--ink3);
+  letter-spacing: .12em;
+  margin-top: 4px;
+}
+
+.rule-thick { height:3px; background:var(--rule); margin:8px 0 2px; }
+.rule-thin  { height:1px; background:var(--rule); margin:2px 0; }
+.rule-double {
+  height:5px;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  background:transparent;
+  margin: 6px 0;
+}
+
+.mast-meta {
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
+  color: var(--ink3);
+  padding: 3px 0;
+}
+
+/* ══════════════════════════════════════
+   NAVIGATION BAR
+══════════════════════════════════════ */
+.nav-bar {
+  background: var(--ink);
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.nav-bar a {
+  color: var(--paper);
+  font-size: .58rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 7px 18px;
+  border-right: 1px solid rgba(255,255,255,.15);
+  transition: background .2s;
+  font-family: 'Times New Roman', Times, serif;
+}
+.nav-bar a:first-child { border-left: 1px solid rgba(255,255,255,.15); }
+.nav-bar a:hover { background: rgba(0,0,0,0.12); }
+
+/* ══════════════════════════════════════
+   LAYOUT UTILITIES
+══════════════════════════════════════ */
+.wrap { padding: 0 28px 28px; }
+
+.cols-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+.cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.cols-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 0; }
+.cols-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 0; }
+.cols-3-2 { display: grid; grid-template-columns: 3fr 2fr; gap: 0; }
+
+.col-pad { padding: 0 18px; }
+.col-pad-l { padding: 0 18px 0 0; }
+.col-pad-r { padding: 0 0 0 18px; }
+
+.br { border-right: 1px solid var(--rule); }
+.bl { border-left:  1px solid var(--rule); }
+.bt { border-top:   1px solid var(--rule); }
+.bb { border-bottom:1px solid var(--rule); }
+
+/* ══════════════════════════════════════
+   TYPOGRAPHY
+══════════════════════════════════════ */
+.hed-xl {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(1.9rem, 3.8vw, 3rem);
+  font-weight: 900; line-height: 1.02;
+  color: var(--ink);
+}
+.hed-lg {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 700; line-height: 1.08;
+  color: var(--ink);
+}
+.hed-md {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-weight: 700; line-height: 1.12;
+  color: var(--ink);
+}
+.hed-sm {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: .95rem; font-weight: 700;
+  line-height: 1.2; color: var(--ink);
+}
+
+.deck {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: clamp(.75rem, 1.2vw, .92rem);
+  color: var(--ink3); line-height: 1.5;
+  margin: 4px 0 6px;
+}
+
+.byline {
+  font-size: .57rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--gray);
+  padding-bottom: 5px; margin-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.body {
+  font-size: .75rem; line-height: 1.8;
+  color: var(--ink2); text-align: justify;
+  hyphens: auto;
+}
+.body p { margin-bottom: .5rem; }
+
+.dropcap::first-letter {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4.4em; font-weight: 900;
+  float: left; line-height: .74;
+  margin: .07em .07em 0 0;
+  color: var(--ink);
+}
+
+/* ══════════════════════════════════════
+   LABELS & TAGS
+══════════════════════════════════════ */
+.tag {
+  display: inline-block;
+  font-size: .52rem; letter-spacing: .18em;
+  text-transform: uppercase;
+  background: var(--ink); color: var(--paper);
+  padding: 2px 7px; margin-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.tag.red { background: var(--ink); }
+.tag.outline {
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--ink);
+}
+
+.pill {
+  display: inline-block;
+  font-size: .6rem; color: var(--ink2);
+  border: 1px solid var(--rule);
+  padding: 2px 8px; margin: 2px 3px 2px 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* ══════════════════════════════════════
+   PULL QUOTE
+══════════════════════════════════════ */
+.pullquote {
+  border-top: 3px solid var(--rule);
+  border-bottom: 3px solid var(--rule);
+  padding: 10px 16px;
+  margin: 14px 0;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: clamp(.85rem, 1.3vw, 1.05rem);
+  line-height: 1.5; text-align: center;
+  color: var(--ink);
+}
+
+/* ══════════════════════════════════════
+   STAT BOXES
+══════════════════════════════════════ */
+.stat-box {
+  border: 1px solid var(--rule);
+  padding: 10px 8px; text-align: center;
+  background: var(--paper2);
+}
+.stat-num {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.7rem; font-weight: 900;
+  color: var(--ink); line-height: 1;
+}
+.stat-lbl {
+  font-size: .52rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gray);
+  margin-top: 3px;
+}
+
+/* ══════════════════════════════════════
+   CLASSIFIED / BOX
+══════════════════════════════════════ */
+.box {
+  border: 1px solid var(--rule);
+  padding: 12px 14px;
+  background: var(--paper2);
+}
+.box-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: .65rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px; margin-bottom: 9px;
+  color: var(--ink);
+}
+
+/* ══════════════════════════════════════
+   TIMELINE
+══════════════════════════════════════ */
+.tl-item {
+  padding-left: 14px;
+  border-left: 2px solid var(--rule);
+  margin-bottom: 16px;
+}
+.tl-date {
+  font-size: .55rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--ink);
+  margin-bottom: 1px;
+}
+.tl-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: .95rem; font-weight: 700;
+  line-height: 1.2; color: var(--ink);
+}
+.tl-org {
+  font-size: .68rem; font-style: italic;
+  color: var(--gray); margin-bottom: 5px;
+}
+
+/* ══════════════════════════════════════
+   SKILLS COLUMN
+══════════════════════════════════════ */
+.skill-group { margin-bottom: 12px; }
+.skill-label {
+  font-size: .58rem; letter-spacing: .16em;
+  text-transform: uppercase; font-weight: 700;
+  color: var(--ink); margin-bottom: 4px;
+  border-bottom: 1px dotted var(--rule);
+  padding-bottom: 2px;
+}
+.skill-item {
+  font-size: .68rem; line-height: 2;
+  color: var(--ink2);
+}
+.skill-item::before { content: '◆ '; font-size: .45em; color: var(--ink); }
+
+/* ══════════════════════════════════════
+   PROJECT CARDS
+══════════════════════════════════════ */
+.project-card {
+  transition: box-shadow .3s, transform .3s;
+  cursor: default;
+  position: relative;
+}
+.project-card:hover {
+  box-shadow: 0 8px 36px rgba(0,0,0,.14);
+  transform: translateY(-3px);
+  z-index: 10;
+}
+.project-num {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4rem; font-weight: 900;
+  color: rgba(0,0,0,.06); line-height: 1;
+  position: absolute; top: -4px; right: 6px;
+}
+
+
+
+/* ══════════════════════════════════════
+   SECTION HEADER
+══════════════════════════════════════ */
+.sec-head {
+  text-align: center;
+  position: relative;
+  padding: 10px 0 5px;
+}
+.sec-head::before, .sec-head::after {
+  content:'';
+  position:absolute; top:50%;
+  height:1px; background:var(--rule); width:30%;
+}
+.sec-head::before { left:0; }
+.sec-head::after  { right:0; }
+.sec-head h2 {
+  display:inline-block;
+  font-family:'Times New Roman',Times,serif;
+  font-size:.62rem; letter-spacing:.3em;
+  text-transform:uppercase;
+  background:var(--paper); padding:0 16px;
+  position:relative; color:var(--ink);
+}
+
+/* ══════════════════════════════════════
+   FOLD LINE
+══════════════════════════════════════ */
+.fold {
+  height:3px;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(0,0,0,.08) 20%,
+    rgba(0,0,0,.18) 50%,
+    rgba(0,0,0,.08) 80%, transparent 100%);
+  position:relative;
+}
+.fold::after {
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.4) 0%,transparent 100%);
+}
+
+/* ══════════════════════════════════════
+   CONTACT
+══════════════════════════════════════ */
+.contact-item { margin-bottom: 7px; }
+.contact-item strong {
+  display:block; font-size:.54rem;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gray);
+}
+.contact-item a, .contact-item span {
+  font-size:.72rem; color:var(--ink);
+  text-decoration:none;
+  border-bottom:1px dotted var(--gray);
+}
+.contact-item a:hover { color:var(--ink); }
+
+/* ══════════════════════════════════════
+   CTA BUTTON
+══════════════════════════════════════ */
+.btn-news {
+  display:inline-block;
+  background:var(--ink); color:var(--paper);
+  font-size:.58rem; letter-spacing:.2em;
+  text-transform:uppercase; padding:9px 22px;
+  text-decoration:none; font-family:'Times New Roman',Times,serif;
+  border:none; cursor:pointer; transition:background .2s;
+}
+.btn-news:hover { background: var(--ink); color:var(--paper); }
+.btn-news.outline {
+  background:transparent; color:var(--ink);
+  border:1px solid var(--ink);
+}
+.btn-news.outline:hover { background:var(--ink); color:var(--paper); }
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+.footer {
+  background:var(--ink);
+  color:var(--paper);
+  padding:10px 28px;
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:6px;
+  font-size:.58rem; letter-spacing:.1em; text-transform:uppercase;
+  font-family:'Times New Roman',Times,serif;
+}
+.footer a { color:var(--paper); opacity:.7; text-decoration:none; }
+.footer a:hover { opacity:1; }
+
+/* ══════════════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════════════ */
+.reveal {
+  opacity:0; transform:translateY(22px);
+  transition:opacity .65s ease, transform .65s ease;
+}
+.reveal.on { opacity:1; transform:translateY(0); }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media(max-width:900px) {
+  .cols-3, .cols-2, .cols-2-1, .cols-1-2, .cols-3-2 {
+    grid-template-columns: 1fr;
+  }
+  .br, .bl { border:none; }
+  .col-pad, .col-pad-l, .col-pad-r { padding:0; }
+  .wrap { padding:0 16px 20px; }
+  .project-num { font-size:2.5rem; }
+}
+@media(max-width:600px) {
+  .ticker { font-size:.5rem; }
+  .mast-meta { flex-direction:column; gap:2px; text-align:center; }
+  .nav-bar a { padding:6px 10px; font-size:.5rem; }
+  .sec-head::before, .sec-head::after { width:12%; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- ════════════════════════ MASTHEAD ════════════════════════ -->
+<header class="masthead">
+  <div class="ticker">
+    <span>Portfolio 2026 · Data &amp; Business Analyst</span>
+    <span>★ Python · SQL · Power BI · Tableau · Machine Learning · Full-Stack ★</span>
+    <span>Bangalore, India</span>
+  </div>
+  <div class="mast-inner">
+    <div class="mast-ornament">✦ &nbsp; ✦ &nbsp; ✦ &nbsp; ✦ &nbsp; ✦</div>
+    <div class="mast-title">VIJAY KUMAR B S</div>
+    <div class="mast-tagline">"Transforming Complex Data Into Business Decisions" &nbsp;·&nbsp; Bangalore, India</div>
+    <div class="rule-thick" style="margin:10px 0 3px;"></div>
+    <div class="rule-thin" style="margin:0 0 8px;"></div>
+    <div class="mast-meta">
+      <span>Bangalore, Karnataka, India</span>
+      <span style="font-family:'Times New Roman',Times,serif; font-style:italic; font-size:.78rem; text-transform:none; letter-spacing:0;">
+        Vijay Kumar B S &nbsp;·&nbsp; Data &amp; Business Analyst
+      </span>
+      <span>Special Portfolio Edition · 2026</span>
+    </div>
+    <div class="rule-thin" style="margin:4px 0;"></div>
+    <div class="rule-thick" style="margin:0;"></div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <a href="#summary">Summary</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ════════════════════════ WRAP ════════════════════════ -->
+<div class="wrap">
+
+
+  <!-- ══════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════ -->
+  <section id="summary">
+    <div class="rule-double mb-3"></div>
+
+    <div class="cols-2-1">
+
+      <!-- MAIN HERO STORY -->
+      <div class="col-pad-l br pr-3 reveal" style="padding-right:18px;">
+        <div class="tag red">Front Page Feature</div>
+        <h1 class="hed-xl" style="margin-bottom:6px;">
+          Data &amp; Business Analyst Transforming Complex Data Into Strategic Business Decisions
+        </h1>
+        <p class="deck">Python · SQL · Power BI · Tableau · Data Visualization · ETL · Machine Learning · Full-Stack Web Development</p>
+        <div class="byline">By The Editorial Board &nbsp;·&nbsp; Bangalore Bureau &nbsp;·&nbsp; 2026</div>
+
+        <!-- Big ornamental quote rule -->
+        <div style="border-left:4px solid var(--ink); padding-left:12px; margin-bottom:12px;">
+          <div style="font-family:'Times New Roman',Times,serif; font-size:clamp(1rem,1.6vw,1.25rem); font-weight:700; color:var(--ink); line-height:1.3;">
+            "Results-driven. Insight-focused. From raw data to real decisions."
+          </div>
+        </div>
+
+        <div class="body dropcap">
+          <p>In a landscape where organisations accumulate vast oceans of data yet frequently struggle to extract meaningful intelligence, <strong>Vijay Kumar B S</strong> stands as a rare professional who bridges the critical gap between raw numbers and boardroom strategy. A results-driven Data &amp; Business Analyst based in Bangalore, India, Vijay brings hands-on mastery of the complete analytical lifecycle — from ingestion and wrangling through modelling and insight delivery.</p>
+          <p>His technical arsenal spans Python (Pandas, NumPy, Scikit-learn), SQL across MySQL and PostgreSQL, Power BI with advanced DAX measures, Tableau interactive dashboards, R Programming, and full-stack web development via Next.js and Node.js. This rare combination of data science depth and engineering breadth enables Vijay to architect solutions that are not merely analytically sound but operationally deployable.</p>
+          <p>Proven across five major projects encompassing geo-spatial market analytics, machine learning classification, business intelligence reporting, full-stack platform engineering, and cybersecurity intelligence — Vijay Kumar B S represents a modern data professional built for the demands of evidence-based enterprise.</p>
+        </div>
+
+        <!-- STAT ROW -->
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-top:14px;">
+          <div class="stat-box"><div class="stat-num">80K+</div><div class="stat-lbl">Listings Analysed</div></div>
+          <div class="stat-box"><div class="stat-num">50K+</div><div class="stat-lbl">Sales Records</div></div>
+          <div class="stat-box"><div class="stat-num">40%</div><div class="stat-lbl">Effort Reduced</div></div>
+          <div class="stat-box"><div class="stat-num">8.4</div><div class="stat-lbl">MCA CGPA</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="col-pad-r reveal" style="padding-left:18px;">
+        <div class="tag" style="margin-bottom:8px;">At a Glance</div>
+
+        <div class="box mb-3">
+          <div class="box-title">Core Expertise</div>
+          <div class="skill-item">End-to-End Data Wrangling</div>
+          <div class="skill-item">Exploratory Data Analysis</div>
+          <div class="skill-item">Statistical Modelling</div>
+          <div class="skill-item">Power BI Dashboards (DAX)</div>
+          <div class="skill-item">Tableau Visualisation</div>
+          <div class="skill-item">ETL Pipelines</div>
+          <div class="skill-item">REST API Design</div>
+          <div class="skill-item">Machine Learning</div>
+          <div class="skill-item">Full-Stack Development</div>
+        </div>
+
+        <div class="pullquote" style="font-size:.82rem; padding:8px 10px; margin:0 0 14px;">
+          "Numbers are just voices waiting to be heard — I translate them into strategy."
+        </div>
+
+        <div class="box mb-3">
+          <div class="box-title">Soft Skills</div>
+          <div class="skill-item">Data Storytelling</div>
+          <div class="skill-item">Requirements Gathering</div>
+          <div class="skill-item">Report Automation</div>
+          <div class="skill-item">Stakeholder Communication</div>
+          <div class="skill-item">Agile Methodology</div>
+        </div>
+
+        <div class="box">
+          <div class="box-title">Contact Desk</div>
+          <div class="contact-item">
+            <strong>Electronic Mail</strong>
+            <a href="mailto:vijayappugowda@gmail.com">vijayappugowda@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <strong>Telephone</strong>
+            <span>+91 9513057757</span>
+          </div>
+          <div class="contact-item">
+            <strong>LinkedIn</strong>
+            <a href="https://linkedin.com/in/vijay-kumar-b-s" target="_blank">vijay-kumar-b-s</a>
+          </div>
+          <div class="contact-item">
+            <strong>GitHub</strong>
+            <a href="https://github.com/vijaykumar-bs" target="_blank">vijaykumar-bs</a>
+          </div>
+          <div style="text-align:center; margin-top:12px;">
+            <a href="mailto:vijayappugowda@gmail.com" class="btn-news" style="font-size:.55rem;">✦ Hire Me ✦</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       EXPERIENCE
+  ══════════════════════════════════════ -->
+  <div class="fold" style="margin:20px 0;"></div>
+  <section id="experience">
+    <div class="sec-head mb-2"><h2>✦ Professional Experience Chronicle ✦</h2></div>
+    <div class="rule-thick mb-3"></div>
+
+    <div class="cols-2 reveal">
+
+      <!-- JOB 1 -->
+      <div class="br col-pad-l" style="padding-right:18px;">
+        <div class="tag red mb-2">Current Position</div>
+        <div class="tl-item">
+          <div class="tl-date">2026 — Present</div>
+          <div class="tl-title">Business &amp; Data Analyst</div>
+          <div class="tl-org">IGEN — India Global Expo News · Bangalore, India</div>
+          <div class="body">
+            <p>As Business &amp; Data Analyst at IGEN, Vijay architects and delivers end-to-end Power BI dashboards and Excel reports that give leadership a real-time window into KPIs spanning sales, operations, and audience engagement — measurably compressing decision turnaround cycles.</p>
+            <p>Performing deep-dive EDA on large, multi-source datasets with Python (Pandas, NumPy), he surfaces revenue trends, seasonal demand patterns, and operational inefficiencies that translate directly into business improvements. His automated SQL and Python reporting workflows have reduced manual data preparation effort by approximately <strong>40%</strong>, while simultaneously elevating accuracy and consistency.</p>
+            <p>Partnering with cross-functional stakeholders to gather requirements, validate insights, and narrate findings through structured data storytelling, Vijay ensures that evidence — not assumption — underpins every strategic decision made at the leadership table.</p>
+          </div>
+        </div>
+
+        <div class="rule-double" style="margin:14px 0;"></div>
+        <div class="pullquote" style="font-size:.8rem; padding:8px 12px;">
+          "Reduced manual reporting effort by ~40% through automated SQL &amp; Python workflows"
+        </div>
+
+        <!-- Responsibilities tags -->
+        <div style="margin-top:10px;">
+          <div style="font-size:.55rem; letter-spacing:.16em; border-bottom:1px solid var(--rule); padding-bottom:3px; margin-bottom:8px; text-transform:uppercase; font-weight:700; color:var(--ink); font-family:'Times New Roman',Times,serif;">Key Responsibilities</div>
+          <span class="pill">Power BI Dashboards</span>
+          <span class="pill">Excel Reports</span>
+          <span class="pill">EDA — Python</span>
+          <span class="pill">SQL Automation</span>
+          <span class="pill">KPI Monitoring</span>
+          <span class="pill">Data Storytelling</span>
+          <span class="pill">Stakeholder Management</span>
+        </div>
+      </div>
+
+      <!-- JOB 2 -->
+      <div class="col-pad-r" style="padding-left:18px;">
+        <div class="tag mb-2">Previous Role</div>
+        <div class="tl-item">
+          <div class="tl-date">Feb 2026 — May 2026</div>
+          <div class="tl-title">Web Developer (Data-Integrated Platform)</div>
+          <div class="tl-org">S-VYASA University · Bangalore, India</div>
+          <div class="body">
+            <p>At S-VYASA, Vijay engineered a comprehensive data-integrated university web platform, connecting PostgreSQL databases to Next.js frontend interfaces to enable real-time display of academic and administrative information across all departments.</p>
+            <p>He architected normalised SQL schemas and RESTful API endpoints for efficient querying of course, faculty, and student records — ensuring data integrity, fast retrieval, and the departmental scalability required by a growing institution. Node.js REST APIs were developed, tested, and documented to guarantee seamless frontend-backend communication and long-term platform reliability.</p>
+          </div>
+        </div>
+
+        <div class="rule-double" style="margin:14px 0;"></div>
+
+        <div class="box">
+          <div class="box-title">Technical Contributions</div>
+          <div class="skill-item">PostgreSQL schema design &amp; normalisation</div>
+          <div class="skill-item">REST API architecture (Node.js)</div>
+          <div class="skill-item">Next.js frontend integration</div>
+          <div class="skill-item">Role-based access control</div>
+          <div class="skill-item">API testing &amp; documentation</div>
+          <div class="skill-item">Real-time data display pipelines</div>
+        </div>
+
+        <!-- Decorative ornament block -->
+        <div style="margin-top:18px; border:1px solid var(--rule); padding:14px; text-align:center; background:var(--paper3);">
+          <div style="font-family:'Times New Roman',Times,serif; font-size:1.8rem; color:var(--ink); opacity:.25; line-height:1; margin-bottom:6px;">VK</div>
+          <div style="font-family:'Times New Roman',Times,serif; font-style:italic; font-size:.78rem; color:var(--ink3); line-height:1.5;">
+            Two roles. One mission.<br>Turn data into decisions that move organisations forward.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       PROJECTS
+  ══════════════════════════════════════ -->
+  <div class="fold" style="margin:20px 0;"></div>
+  <section id="projects">
+    <div class="sec-head mb-2"><h2>✦ Project Dispatches — Key Works ✦</h2></div>
+    <div class="rule-thick mb-3"></div>
+
+    <!-- PROJECT ROW 1: Airbnb + University (2-col) -->
+    <div class="cols-2 mb-3 reveal">
+
+      <!-- P1 -->
+      <div class="br col-pad-l project-card" style="padding-right:18px; padding-bottom:14px;">
+        <div class="project-num">01</div>
+        <div class="tag red mb-1">Data Analytics · Geo-Spatial</div>
+        <h2 class="hed-lg">Airbnb Listings Analysis Dashboard — 80,000+ Properties Mapped</h2>
+        <p class="deck">Multi-view Tableau dashboard correlating review frequency, occupancy, and seasonal pricing trends across a 80,000+ listing dataset</p>
+        <div class="byline">Tableau · Kaggle Dataset · Geo-Spatial Visualization · 2026</div>
+        <div class="body">
+          <p>Built a multi-view interactive Tableau dashboard on 80,000+ Airbnb listings, performing cross-dataset joins across Listings, Calendar, and Reviews tables to correlate review frequency, occupancy rates, and seasonal pricing trends.</p>
+          <p>Created geo-spatial zip-code-level maps visualising average price, revenue concentration, and listing density — enabling data-backed competitive pricing and investment decisions for hosts and market analysts. Published on Tableau Public, translating raw marketplace data into business-ready visual intelligence for non-technical stakeholders.</p>
+        </div>
+        <div class="rule-thin" style="margin:10px 0;"></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+          <div class="stat-box"><div class="stat-num" style="font-size:1.2rem;">80K+</div><div class="stat-lbl">Listings</div></div>
+          <div class="stat-box"><div class="stat-num" style="font-size:1.2rem;">3</div><div class="stat-lbl">Joined Tables</div></div>
+          <div class="stat-box"><div class="stat-num" style="font-size:1.2rem;">Live</div><div class="stat-lbl">Tableau Public</div></div>
+        </div>
+        <div style="margin-top:10px;">
+          <span class="pill">Tableau</span><span class="pill">Geo-Spatial Maps</span><span class="pill">Cross-Dataset Joins</span><span class="pill">Seasonal Trends</span><span class="pill">Pricing Analytics</span>
+        </div>
+      </div>
+
+      <!-- P2 -->
+      <div class="col-pad-r project-card" style="padding-left:18px; padding-bottom:14px;">
+        <div class="project-num">02</div>
+        <div class="tag mb-1">Full-Stack · Admin Platform</div>
+        <h2 class="hed-lg">University Website Admin Dashboard — Full-Stack Academic Management</h2>
+        <p class="deck">Next.js + Node.js + SQL platform managing applications, courses, faculty, blogs and real-time content with secure role-based access</p>
+        <div class="byline">Next.js · Node.js · SQL · REST API · Responsive UI · 2026</div>
+        <div class="body">
+          <p>Built a full-stack admin dashboard with a Next.js frontend and Node.js backend to manage applications, courses, faculty, student enquiries, blogs, and reviews — secured by role-based access control and authentication.</p>
+          <p>Designed a normalised SQL relational database with optimised table relationships for users, applications, content, and courses — ensuring referential integrity, query efficiency, and scalability. Developed RESTful CRUD APIs and delivered a fully responsive admin panel enabling non-technical staff to manage live website content, approve records, and track enquiries in real time.</p>
+        </div>
+        <div class="rule-thin" style="margin:10px 0;"></div>
+        <div class="box" style="margin-top:4px;">
+          <div class="box-title">Modules Delivered</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 14px;">
+            <div class="skill-item">Applications Management</div>
+            <div class="skill-item">Course Catalogue</div>
+            <div class="skill-item">Faculty Directory</div>
+            <div class="skill-item">Blog Publishing</div>
+            <div class="skill-item">Student Enquiries</div>
+            <div class="skill-item">Secure Auth &amp; RBAC</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;">
+          <span class="pill">Next.js</span><span class="pill">Node.js</span><span class="pill">SQL</span><span class="pill">REST API</span><span class="pill">RBAC</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="rule-thick mb-3"></div>
+
+    <!-- PROJECT ROW 2: Sales + Attrition + Vulnerability (3-col) -->
+    <div class="cols-3 reveal">
+
+      <!-- P3 -->
+      <div class="br col-pad-l project-card" style="padding-right:18px; padding-bottom:14px;">
+        <div class="project-num" style="font-size:3rem;">03</div>
+        <div class="tag red mb-1">BI · Power BI</div>
+        <h2 class="hed-md">Sales Data Analytics Dashboard — 50,000+ Records Into Revenue Intelligence</h2>
+        <p class="deck">Python · SQL · Power BI · DAX · Forecasting · 2026</p>
+        <div class="byline">Python · SQL · Power BI · Pandas · NumPy</div>
+        <div class="body">
+          <p>Cleaned and transformed 50,000+ sales records — resolved nulls, removed outliers, engineered date-time and category features — then applied statistical analysis to surface seasonal trends, top products, and underperforming regions.</p>
+          <p>Built an interactive Power BI dashboard with DAX measures, drill-through filters, and time-series charts, empowering stakeholders to self-serve real-time revenue monitoring and data-driven forecasting.</p>
+        </div>
+        <div class="rule-thin" style="margin:8px 0;"></div>
+        <span class="pill">Power BI</span><span class="pill">DAX</span><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">Time-Series</span>
+      </div>
+
+      <!-- P4 -->
+      <div class="br col-pad project-card" style="padding-bottom:14px;">
+        <div class="project-num" style="font-size:3rem;">04</div>
+        <div class="tag mb-1">Machine Learning · HR Analytics</div>
+        <h2 class="hed-md">Employee Attrition Prediction — ML Model Guides HR Retention Strategy</h2>
+        <p class="deck">Python · Scikit-learn · Pandas · MySQL · 2024</p>
+        <div class="byline">Python · Scikit-learn · Logistic Regression · Random Forest</div>
+        <div class="body">
+          <p>Engineered features from a 1,470-record HR dataset (label encoding, normalisation, KNN imputation); trained and compared Logistic Regression and Random Forest classifiers using cross-validation, achieving strong accuracy and F1-score.</p>
+          <p>Identified the top 10 attrition-driving features via feature importance analysis, stored risk scores in MySQL, and produced an executive summary report guiding HR retention strategy and workforce planning decisions.</p>
+        </div>
+        <div class="rule-thin" style="margin:8px 0;"></div>
+        <span class="pill">Scikit-learn</span><span class="pill">Feature Engineering</span><span class="pill">MySQL</span><span class="pill">Classification</span>
+      </div>
+
+      <!-- P5 -->
+      <div class="col-pad-r project-card" style="padding-left:18px; padding-bottom:14px;">
+        <div class="project-num" style="font-size:3rem;">05</div>
+        <div class="tag mb-1">Cybersecurity · OWASP</div>
+        <h2 class="hed-md">Web Vulnerability Analytics Dashboard — Automated Security Intelligence</h2>
+        <p class="deck">Python · OWASP ZAP API · JSON · HTML Reporting · 2026</p>
+        <div class="byline">Python · OWASP ZAP API · Automated Pipeline</div>
+        <div class="body">
+          <p>Engineered an automated pipeline integrating with the OWASP ZAP API to collect, parse, and classify vulnerability findings by severity — High / Medium / Low / Informational — generating structured JSON and HTML reports.</p>
+          <p>The system materially reduced manual remediation triage time for security teams, transforming raw vulnerability scan output into structured, actionable security intelligence with zero manual intervention required post-trigger.</p>
+        </div>
+        <div class="rule-thin" style="margin:8px 0;"></div>
+        <span class="pill">OWASP ZAP</span><span class="pill">Python</span><span class="pill">JSON</span><span class="pill">Severity Classification</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SKILLS
+  ══════════════════════════════════════ -->
+  <div class="fold" style="margin:20px 0;"></div>
+  <section id="skills">
+    <div class="sec-head mb-2"><h2>✦ Technical Skills Register ✦</h2></div>
+    <div class="rule-thick mb-3"></div>
+
+    <!-- 3-column skills grid, black & white, perfectly aligned -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0;" class="reveal">
+
+      <!-- COL 1 -->
+      <div style="border-right:1px solid var(--rule); padding-right:22px;">
+
+        <div style="margin-bottom:18px;">
+          <div class="sk-head">Languages &amp; Query</div>
+          <div class="sk-rule"></div>
+          <div class="sk-item">Python — Pandas, NumPy, Scikit-learn</div>
+          <div class="sk-item">SQL — MySQL, PostgreSQL</div>
+          <div class="sk-item">R Programming</div>
+        </div>
+
+        <div>
+          <div class="sk-head">Data Engineering</div>
+          <div class="sk-rule"></div>
+          <div class="sk-item">ETL Pipeline Design</div>
+          <div class="sk-item">Data Cleaning &amp; Wrangling</div>
+          <div class="sk-item">REST API Integration</div>
+          <div class="sk-item">Data Schema Design</div>
+        </div>
+
+      </div>
+
+      <!-- COL 2 -->
+      <div style="border-right:1px solid var(--rule); padding:0 22px;">
+
+        <div style="margin-bottom:18px;">
+          <div class="sk-head">BI &amp; Visualisation</div>
+          <div class="sk-rule"></div>
+          <div class="sk-item">Power BI — DAX, Drill-through, Dynamic KPIs</div>
+          <div class="sk-item">Tableau — Dashboards, Maps, Trend Analysis</div>
+          <div class="sk-item">Excel — Pivot Tables, VLOOKUP, Charts</div>
+        </div>
+
+        <div>
+          <div class="sk-head">Data Analysis</div>
+          <div class="sk-rule"></div>
+          <div class="sk-item">Exploratory Data Analysis (EDA)</div>
+          <div class="sk-item">Statistical Analysis &amp; Hypothesis Testing</div>
+          <div class="sk-item">Predictive Modelling</div>
+          <div class="sk-item">Feature Engineering</div>
+        </div>
+
+      </div>
+
+      <!-- COL 3 -->
+      <div style="padding-left:22px;">
+
+        <div style="margin-bottom:18px;">
+          <div class="sk-head">Web &amp; Dev Tools</div>
+          <div class="sk-rule"></div>
+          <div class="sk-item">Next.js &amp; Node.js</div>
+          <div class="sk-item">Git &amp; GitHub</div>
+          <div class="sk-item">Jupyter Notebook</div>
+          <div class="sk-item">VS Code</div>
+          <div class="sk-item">Figma</div>
+          <div class="sk-item">Agile Methodology</div>
+        </div>
+
+        <div>
+          <div class="sk-head">Soft Skills</div>
+          <div class="sk-rule"></div>
+          <div class="sk-item">Data Storytelling</div>
+          <div class="sk-item">Requirements Gathering</div>
+          <div class="sk-item">Report Automation</div>
+          <div class="sk-item">Stakeholder Communication</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <style>
+      .sk-head {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: .6rem;
+        font-weight: 700;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
+      .sk-rule {
+        height: 1px;
+        background: var(--ink);
+        margin-bottom: 7px;
+        opacity: .35;
+      }
+      .sk-item {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: .72rem;
+        line-height: 1.9;
+        color: var(--ink2);
+        padding-left: 10px;
+        position: relative;
+      }
+      .sk-item::before {
+        content: '·';
+        position: absolute;
+        left: 0;
+        color: var(--ink);
+        font-size: 1em;
+        line-height: 1.9;
+      }
+      @media(max-width:900px){
+        #skills > div[style*="grid-template-columns:1fr 1fr 1fr"] {
+          grid-template-columns: 1fr !important;
+        }
+        #skills [style*="border-right"],
+        #skills [style*="padding-left:22px"] {
+          border-right: none !important;
+          padding: 0 !important;
+          margin-bottom: 16px;
+        }
+      }
+    </style>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       EDUCATION
+  ══════════════════════════════════════ -->
+  <div class="fold" style="margin:20px 0;"></div>
+  <section id="education">
+    <div class="sec-head mb-2"><h2>✦ Academic Record ✦</h2></div>
+    <div class="rule-thick mb-3"></div>
+
+    <div class="cols-2 reveal">
+
+      <div class="br col-pad-l" style="padding-right:18px; padding-bottom:14px;">
+        <div class="tag red mb-2">Postgraduate</div>
+        <div class="tl-item">
+          <div class="tl-date">2024 — 2026</div>
+          <div class="tl-title">Master of Computer Applications (MCA)</div>
+          <div class="tl-org">S-VYASA Deemed-to-be University, Bangalore, India</div>
+          <div class="body">
+            <p>Specialising in Data Science, Machine Learning, Business Intelligence, and Full-Stack Web Development. Thesis research focused on predictive analytics applied to organisational behaviour datasets.</p>
+            <p>Advanced coursework encompassed statistical modelling, big data pipelines, deep learning fundamentals, and agile software engineering — equipping Vijay with the dual analytical-technical profile demanded by modern data roles.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
+          <div class="stat-box"><div class="stat-num">8.4</div><div class="stat-lbl">CGPA</div></div>
+          <div class="stat-box"><div class="stat-num">MCA</div><div class="stat-lbl">Degree</div></div>
+        </div>
+      </div>
+
+      <div class="col-pad-r" style="padding-left:18px; padding-bottom:14px;">
+        <div class="tag mb-2">Undergraduate</div>
+        <div class="tl-item">
+          <div class="tl-date">2021 — 2024</div>
+          <div class="tl-title">Bachelor of Computer Applications (BCA)</div>
+          <div class="tl-org">Bangalore Institute of Management Studies, Bangalore, India</div>
+          <div class="body">
+            <p>Comprehensive foundation in programming, database management, web technologies, software engineering, and information systems. Graduated First Class with distinction in Data Structures and Algorithms.</p>
+            <p>Undergraduate coursework established the technical fundamentals — C, Java, Python, SQL, and web development — that underpin Vijay's ability to move fluently across the full technology stack in his professional roles.</p>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;">
+          <div class="stat-box"><div class="stat-num">7.4</div><div class="stat-lbl">CGPA</div></div>
+          <div class="stat-box"><div class="stat-num">BCA</div><div class="stat-lbl">Degree</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       CONTACT
+  ══════════════════════════════════════ -->
+  <div class="fold" style="margin:20px 0;"></div>
+  <section id="contact">
+    <div class="sec-head mb-2"><h2>✦ Editorial Desk — Get In Touch ✦</h2></div>
+    <div class="rule-thick mb-3"></div>
+
+    <div class="cols-3 reveal">
+
+      <div class="br col-pad-l" style="padding-right:18px;">
+        <div class="tag mb-2">Direct Lines</div>
+        <div class="contact-item">
+          <strong>Electronic Mail</strong>
+          <a href="mailto:vijayappugowda@gmail.com">vijayappugowda@gmail.com</a>
+        </div>
+        <div class="contact-item" style="margin-top:8px;">
+          <strong>Mobile / WhatsApp</strong>
+          <span>+91 9513057757</span>
+        </div>
+        <div class="contact-item" style="margin-top:8px;">
+          <strong>Location</strong>
+          <span>Bangalore, Karnataka, India</span>
+        </div>
+        <div style="margin-top:16px;">
+          <a href="mailto:vijayappugowda@gmail.com" class="btn-news">✦ Send a Message ✦</a>
+        </div>
+      </div>
+
+      <div class="br col-pad" style="padding-bottom:14px;">
+        <div class="tag mb-2">Professional Networks</div>
+        <div class="contact-item">
+          <strong>LinkedIn Profile</strong>
+          <a href="https://linkedin.com/in/vijay-kumar-b-s" target="_blank">linkedin.com/in/vijay-kumar-b-s</a>
+        </div>
+        <div class="contact-item" style="margin-top:8px;">
+          <strong>GitHub Repository</strong>
+          <a href="https://github.com/vijaykumar-bs" target="_blank">github.com/vijaykumar-bs</a>
+        </div>
+        <div class="pullquote" style="font-size:.75rem; margin-top:16px; padding:8px 12px;">
+          "Open to Data Analyst, Business Analyst &amp; BI Developer opportunities — Bangalore &amp; Remote"
+        </div>
+      </div>
+
+      <div class="col-pad-r" style="padding-left:18px;">
+        <div class="tag mb-2">Availability Notice</div>
+        <div class="body" style="margin-bottom:14px;">
+          <p>Vijay Kumar B S is actively available for full-time roles in Data Analytics, Business Intelligence, and related fields. He is open to on-site positions in Bangalore as well as remote and hybrid engagements.</p>
+          <p>Recruiters and hiring managers are encouraged to reach out directly via email or LinkedIn for the fastest response.</p>
+        </div>
+        <!-- Ornament -->
+        <div style="border:2px double var(--rule); padding:14px; text-align:center; background:var(--paper2);">
+          <div style="font-family:'Times New Roman',Times,serif; font-size:1.3rem; font-weight:900; color:var(--ink); line-height:1; margin-bottom:6px; opacity:.6; letter-spacing:.1em;">VIJAY KUMAR B S</div>
+          <div style="font-size:.56rem; letter-spacing:.18em; text-transform:uppercase; color:var(--gray);">
+            ✦ &nbsp; Portfolio of Record · 2026 &nbsp; ✦
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+<!-- END WRAP -->
+
+<!-- ════════════════════════ FOOTER ════════════════════════ -->
+<footer class="footer">
+  <span>Vijay Kumar B S · Portfolio 2026</span>
+  <span style="font-family:'Times New Roman',Times,serif; font-style:italic; font-size:.75rem; text-transform:none; letter-spacing:0;">
+    "Transforming Complex Data Into Business Decisions"
+  </span>
+  <span>
+    <a href="mailto:vijayappugowda@gmail.com">vijayappugowda@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://linkedin.com/in/vijay-kumar-b-s" target="_blank">LinkedIn</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/vijaykumar-bs" target="_blank">GitHub</a>
+  </span>
+</footer>
+
+</div><!-- END PAGE -->
+
+<script>
+// Scroll reveal
+const els = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('on'), i * 90);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+els.forEach(el => obs.observe(el));
+
+// Smooth nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-bar a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.background = a.getAttribute('href') === '#' + current ? 'rgba(0,0,0,0.12)' : '';
+  });
+});
+
+// Project card hover depth
+document.querySelectorAll('.project-card').forEach(c => {
+  c.addEventListener('mouseenter', () => c.style.background = 'var(--paper2)');
+  c.addEventListener('mouseleave', () => c.style.background = '');
+});
+</script>
+</body>
+</html>
