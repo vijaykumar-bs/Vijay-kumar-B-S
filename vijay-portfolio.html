@@ -7,22 +7,24 @@
 
 <style>
 :root {
-  --paper: #ffffff;
-  --paper2: #f6f6f6;
-  --paper3: #e8e8e8;
-  --ink: #111111;
-  --ink2: #222222;
-  --ink3: #4a4a4a;
-  --accent: #0d0d0d;
-  --rule: #111111;
-  --gray: #555555;
+  --paper: #f4edd8;
+  --paper2: #ede3c8;
+  --paper3: #e8dab8;
+  --ink: #18120a;
+  --ink2: #2e2210;
+  --ink3: #4a3a22;
+  --red: #8b1a1a;
+  --red2: #a82020;
+  --gold: #7a6020;
+  --rule: #2e2210;
+  --gray: #6b5840;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
 html { scroll-behavior: smooth; }
 
 body {
-  background: #ffffff;
+  background: #b8a888;
   background-image: repeating-linear-gradient(
     90deg, transparent, transparent 60px, rgba(0,0,0,0.03) 60px, rgba(0,0,0,0.03) 61px
   );
@@ -40,10 +42,12 @@ body::after {
 
 /* ── PAGE WRAPPER ── */
 .page {
-  max-width: 1160px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   background: var(--paper);
-  box-shadow: 0 4px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.2);
+  box-shadow: none;
+  border: none;
   animation: unfold .9s cubic-bezier(.16,1,.3,1) both;
 }
 @keyframes unfold {
@@ -91,7 +95,10 @@ body::after {
 .mast-ornament {
   font-size: .75rem;
   letter-spacing: .8em;
-  color: var(--ink);
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
 .mast-title {
   font-family: 'Times New Roman', Times, serif;
   font-size: clamp(2.4rem, 6vw, 5rem);
@@ -152,7 +159,7 @@ body::after {
   font-family: 'Times New Roman', Times, serif;
 }
 .nav-bar a:first-child { border-left: 1px solid rgba(255,255,255,.15); }
-.nav-bar a:hover { background: rgba(0,0,0,0.12); }
+.nav-bar a:hover { background: var(--red); }
 
 /* ══════════════════════════════════════
    LAYOUT UTILITIES
@@ -242,7 +249,7 @@ body::after {
   padding: 2px 7px; margin-bottom: 5px;
   font-family: 'Times New Roman', Times, serif;
 }
-.tag.red { background: var(--ink); }
+.tag.red { background: var(--red); }
 .tag.outline {
   background: transparent; color: var(--ink);
   border: 1px solid var(--ink);
@@ -282,7 +289,7 @@ body::after {
 .stat-num {
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.7rem; font-weight: 900;
-  color: var(--ink); line-height: 1;
+  color: var(--red); line-height: 1;
 }
 .stat-lbl {
   font-size: .52rem; letter-spacing: .1em;
@@ -424,7 +431,7 @@ body::after {
   text-decoration:none;
   border-bottom:1px dotted var(--gray);
 }
-.contact-item a:hover { color:var(--ink); }
+.contact-item a:hover { color:var(--red); }
 
 /* ══════════════════════════════════════
    CTA BUTTON
@@ -437,7 +444,7 @@ body::after {
   text-decoration:none; font-family:'Times New Roman',Times,serif;
   border:none; cursor:pointer; transition:background .2s;
 }
-.btn-news:hover { background: var(--ink); color:var(--paper); }
+.btn-news:hover { background:var(--red); color:var(--paper); }
 .btn-news.outline {
   background:transparent; color:var(--ink);
   border:1px solid var(--ink);
@@ -549,7 +556,7 @@ body::after {
         <div class="byline">By The Editorial Board &nbsp;·&nbsp; Bangalore Bureau &nbsp;·&nbsp; 2026</div>
 
         <!-- Big ornamental quote rule -->
-        <div style="border-left:4px solid var(--ink); padding-left:12px; margin-bottom:12px;">
+        <div style="border-left:4px solid var(--red); padding-left:12px; margin-bottom:12px;">
           <div style="font-family:'Times New Roman',Times,serif; font-size:clamp(1rem,1.6vw,1.25rem); font-weight:700; color:var(--ink); line-height:1.3;">
             "Results-driven. Insight-focused. From raw data to real decisions."
           </div>
@@ -1103,7 +1110,7 @@ window.addEventListener('scroll', () => {
     if (window.scrollY >= s.offsetTop - 120) current = s.id;
   });
   navLinks.forEach(a => {
-    a.style.background = a.getAttribute('href') === '#' + current ? 'rgba(0,0,0,0.12)' : '';
+    a.style.background = a.getAttribute('href') === '#' + current ? 'var(--red)' : '';
   });
 });
 
